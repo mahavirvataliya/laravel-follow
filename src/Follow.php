@@ -30,6 +30,8 @@ class Follow
 {
     use SoftDeletes;
 
+    protected $dates = ['deleted_at'];
+
     const RELATION_LIKE = 'like';
 
     const RELATION_FOLLOW = 'follow';
@@ -43,6 +45,12 @@ class Follow
     const RELATION_UPVOTE = 'upvote';
 
     const RELATION_DOWNVOTE = 'downvote';
+
+    const RELATION_BLOCK = 'block';
+
+    const RELATION_HIDE = 'hide';
+
+    const RELATION_REPORT = 'report';
 
     const RELATION_TYPES = [
         'likes' => 'like',
@@ -60,6 +68,12 @@ class Follow
         'upvoters' => 'upvote',
         'downvotes' => 'downvote',
         'downvoters' => 'downvote',
+        'blockers' => 'block',
+        'blocks' => 'block',
+        'hiders' => 'hide',
+        'hides' => 'hide',
+        'reporters' => 'report',
+        'reports' => 'report',
     ];
 
     /**
@@ -78,7 +92,8 @@ class Follow
             return $model->{$relation}->where('id', head($target->ids))->isNotEmpty();
         }
 
-        return $model->{$relation}($target->classname)->where('id', head($target->ids))->exists();
+        return $model->{$relation}($target->classname)->where('followable_id', head($target->ids))->exists();
+//        return $model->{$relation}($target->classname)->where('id', head($target->ids))->exists();
     }
 
     /**

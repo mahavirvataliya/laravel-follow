@@ -21,7 +21,7 @@ class CreateLaravelFollowTables extends Migration
     {
         Schema::create(config('follow.followable_table', 'followables'), function (Blueprint $table) {
             $userForeignKey = config('follow.users_table_foreign_key', 'user_id');
-
+            $table->bigIncrements('id');
             // Laravel 5.8 session user is unsignedBigInteger
             // https://github.com/laravel/framework/pull/28206/files
             if ((float) app()->version() >= 5.8) {
@@ -32,7 +32,7 @@ class CreateLaravelFollowTables extends Migration
 
             $table->unsignedInteger('followable_id');
             $table->string('followable_type')->index();
-            $table->string('relation')->default('follow')->comment('follow/like/subscribe/favorite/upvote/downvote');
+            $table->string('relation')->default('follow')->comment('follow/like/subscribe/favorite/upvote/downvote/block/hide/report');
             $table->softDeletes();
             $table->timestamps();
 
