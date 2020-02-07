@@ -33,7 +33,7 @@
 You can install the package using composer
 
 ```sh
-$ composer require overtrue/laravel-follow -vvv
+$ composer require infobizzs/laravel-follow -vvv
 ```
 
 Then add the service provider to `config/app.php`
