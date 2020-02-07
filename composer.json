@@ -1,5 +1,5 @@
 {
-    "name": "overtrue/laravel-follow",
+    "name": "infobizzs/laravel-follow",
     "description": "Laravel 5 User Based System",
     "require": {
         "php": ">=7.0"
@@ -12,8 +12,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "overtrue",
-            "email": "i@overtrue.me"
+            "name": "Ekta",
+            "email": "ekta@infobizzs.com"
         }
     ],
     "autoload": {
